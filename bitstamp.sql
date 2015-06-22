@@ -16,7 +16,7 @@ CREATE TABLE time_bitstamp (
 
 CREATE INDEX ON time_bitstamp (dt);
 
-CREATE TABLE IF NOT EXISTS ohlc_bitstamp (
+CREATE TABLE ohlc_bitstamp (
   date TIMESTAMP WITHOUT TIME ZONE,
   open DECIMAL(12,2),
   high DECIMAL(12,2),
@@ -61,4 +61,4 @@ WINDOW w AS (
     date_trunc('hour', dt) + INTERVAL '1 minute' * floor( EXTRACT( MINUTE from dt) / 30 ) * 30
 );
 
-COPY (SELECT * FROM ohlc_bitstamp) TO '/tmp/BITSTAMP_BTCUSD.csv' WITH CSV HEADER;
+COPY (SELECT * FROM ohlc_bitstamp) TO '/tmp/bitstampUSD_ohlc.csv' WITH CSV HEADER;
