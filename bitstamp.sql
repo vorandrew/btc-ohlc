@@ -61,4 +61,4 @@ WINDOW w AS (
     date_trunc('hour', dt) + INTERVAL '1 minute' * floor( EXTRACT( MINUTE from dt) / 30 ) * 30
 );
 
-COPY (SELECT * FROM ohlc_bitstamp) TO '/tmp/bitstampUSD_ohlc.csv' WITH CSV HEADER;
+COPY (SELECT * FROM ohlc_bitstamp) TO '/tmp/BTCUSD.csv' WITH CSV;
