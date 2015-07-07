@@ -71,4 +71,4 @@ COPY (
         volume "Volume"
     FROM
         ohlc_bitstamp
-) TO '/tmp/BTCUSD.csv' WITH CSV HEADER;
+) TO '/tmp/BTCUSD.csv' WITH CSV;
