@@ -19,15 +19,3 @@ vol = volatility(
 )
 
 tail(vol)
-
-df = data.frame(
-        dt = parse_date_time( btcusd[,c("Date")], '%Y%m%d %H%M%S'),
-        vol = vol
-    )
-
-ggplot(df, aes(dt, vol)) + scale_y_datetime() + geom_line() +
-  xlab("Date") + ylab("Volatility")
-
-
-parse_date_time( , '%Y%m%d %H%M%S')
-
