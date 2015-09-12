@@ -54,13 +54,14 @@ SELECT
   last_value(price) OVER w,
   SUM(volume) OVER w
 FROM
-  time_bitfinex
+  (SELECT * FROM time_bitfinex ORDER BY dt) as t
 WINDOW w AS (
   PARTITION BY
     date_trunc('hour', dt) + INTERVAL '1 minute' * floor( EXTRACT( MINUTE from dt) / 30 ) * 30
   ORDER BY
     date_trunc('hour', dt) + INTERVAL '1 minute' * floor( EXTRACT( MINUTE from dt) / 30 ) * 30
-);
+)
+ORDER BY date_trunc('hour', dt) + INTERVAL '1 minute' * floor( EXTRACT( MINUTE from dt) / 30 ) * 30;
 
 COPY (
     SELECT
